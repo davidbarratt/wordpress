@@ -1,8 +1,4 @@
-FROM wordpress
-
-RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
-  && chmod +x wp-cli.phar \
-  && mv wp-cli.phar /usr/local/bin/wp
+FROM wordpress:5.7.1-apache
 
 # Set the max upload size.
 RUN { \
@@ -16,5 +12,3 @@ RUN { \
     echo 'MinSpareServers 1'; \
   } | tee "$APACHE_CONFDIR/conf-available/low-memory.conf" \
   && a2enconf low-memory
-
-RUN a2enmod env
