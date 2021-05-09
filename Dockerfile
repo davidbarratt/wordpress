@@ -1,5 +1,7 @@
 FROM wordpress:5.7.1-apache
 
+LABEL org.opencontainers.image.source https://github.com/davidbarratt/wordpress
+
 # Set the max upload size.
 RUN { \
     echo 'upload_max_filesize = 32M'; \
